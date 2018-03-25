@@ -8,14 +8,9 @@ collection = wp.WikipediaCollection("./data/wp.db")
 @bottle.route('/action')
 def search():
    query = bottle.request.query.q
-   article = collection.find_article_by_title(query)
    bottle.response.content_type = 'application/json'
-   if article is None:
-       return json.dumps({
-           'textToSpeech': '見つかりません'
-       }, indent=2, separators=(',', ': '), ensure_ascii=False)
    return json.dumps({
-       'textToSpeech': article.opening_text
+       'textToSpeech': query
    }, indent=2, separators=(',', ': '), ensure_ascii=False)
 
 
