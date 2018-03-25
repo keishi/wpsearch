@@ -8,8 +8,9 @@ try:
     mecab.parse("お元気でお過ごしですか")
     print("natto-py OK")
 except ModuleNotFoundError:
-    print("natto-py not found")
+    print("natto-pyモジュールが見つかりませんでした")
     all_ok = False
+    print("モジュールサーチパス", sys.path)
 except :
     print("Unexpected error:", sys.exc_info()[0])
     all_ok = False
@@ -23,8 +24,31 @@ try:
     db.close()
     print("sqlite3 OK")
 except ModuleNotFoundError:
-    print("sqlite3 not found")
+    print("sqlite3モジュールが見つかりませんでした")
     all_ok = False
+    print("モジュールサーチパス", sys.path)
+except :
+    print("Unexpected error:", sys.exc_info()[0])
+    all_ok = False
+
+try:
+    import bottle
+    print("bottle OK")
+except ModuleNotFoundError:
+    print("bottleモジュールが見つかりませんでした")
+    all_ok = False
+    print("モジュールサーチパス", sys.path)
+except :
+    print("Unexpected error:", sys.exc_info()[0])
+    all_ok = False
+
+try:
+    import tqdm
+    print("tqdm OK")
+except ModuleNotFoundError:
+    print("tqdmモジュールが見つかりませんでした")
+    all_ok = False
+    print("モジュールサーチパス", sys.path)
 except :
     print("Unexpected error:", sys.exc_info()[0])
     all_ok = False
